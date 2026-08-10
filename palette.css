@@ -1,0 +1,15 @@
+:root {
+  --laser-background: #050b14;
+  --laser-core: #f7fdff;
+  --laser-cyan-body: #11bfe9;
+  --laser-cyan-highlight: #78ebff;
+  --laser-cyan-side: #08798f;
+  --laser-purple-body: #5955df;
+  --laser-purple-highlight: #a19af7;
+  --laser-purple-side: #4039a2;
+  --laser-eye-tracking: color-mix(
+    in srgb,
+    var(--laser-cyan-body),
+    var(--laser-purple-body)
+  );
+}
