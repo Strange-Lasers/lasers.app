@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#050b14">
-    <meta name="description" content="Apps by Strange Lasers">
+    <meta name="description" content="Hosted apps and self-hosted tools by Strange Lasers. Open an app or read the docs to run a project yourself.">
     <meta property="og:title" content="lasers.app">
-    <meta property="og:description" content="Apps by Strange Lasers">
+    <meta property="og:description" content="Hosted apps and self-hosted tools by Strange Lasers. Open an app or read the docs to run a project yourself.">
     <meta property="og:image" content="https://lasers.app/icon-512.png">
     <meta property="og:url" content="https://lasers.app/">
     <meta property="og:type" content="website">
@@ -22,18 +22,55 @@
       <header class="apps-header">
         <img class="apps-mark" src="mark-transparent.svg" alt="" width="512" height="512">
         <img class="apps-wordmark" src="wordmark.svg" alt="Strange Lasers" width="605" height="230">
-        <p class="apps-tagline">Apps by Strange Lasers</p>
+        <h1 class="apps-tagline">Apps by Strange Lasers</h1>
       </header>
 
-      <ul class="apps-grid" role="list">
-        <li class="app-tile">
-          <a class="app-tile-link" href="https://stowplan.lasers.app" rel="noopener">
-            <img class="app-tile-icon" src="stowplan-icon.svg" alt="" width="64" height="64">
-            <span class="app-tile-name">Stowplan</span>
-            <span class="app-tile-blurb">Organize your rooms, shelves, cabinets, and bins.</span>
-          </a>
-        </li>
-      </ul>
+      <section class="apps-section" aria-labelledby="hosted-heading">
+        <h2 class="apps-section-title" id="hosted-heading">Hosted apps</h2>
+        <ul class="apps-grid" role="list">
+          <li class="app-tile">
+            <a class="app-tile-link" href="https://stowplan.lasers.app" rel="noopener">
+              <img class="app-tile-icon" src="stowplan-icon.svg" alt="" width="64" height="64">
+              <span class="app-tile-name">Stowplan</span>
+              <span class="app-tile-blurb">Organize your rooms, shelves, cabinets, and bins.</span>
+              <span class="app-tile-action">Open app <span aria-hidden="true">&rarr;</span></span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="apps-section" aria-labelledby="self-hosted-heading">
+        <header class="apps-section-header">
+          <h2 class="apps-section-title" id="self-hosted-heading">Self-hosted tools</h2>
+          <p class="apps-section-note">Documentation and setup guides.</p>
+        </header>
+        <ul class="apps-grid" role="list">
+          <li class="app-tile">
+            <a class="app-tile-link" href="https://docs.guildcontrol.lasers.app/" rel="noopener">
+              <span class="app-tile-icon app-tile-initials" aria-hidden="true">GC</span>
+              <span class="app-tile-name">GuildControl MCP</span>
+              <span class="app-tile-blurb">Connect your AI tools to Discord through a bot you control.</span>
+              <span class="app-tile-action">Read docs <span aria-hidden="true">&rarr;</span></span>
+            </a>
+          </li>
+          <li class="app-tile">
+            <a class="app-tile-link" href="https://docs.cloudflare-fleet.lasers.app/" rel="noopener">
+              <span class="app-tile-icon app-tile-initials" aria-hidden="true">CF</span>
+              <span class="app-tile-name">Cloudflare Fleet</span>
+              <span class="app-tile-blurb">Audit and manage your Cloudflare zones from one control panel.</span>
+              <span class="app-tile-action">Read docs <span aria-hidden="true">&rarr;</span></span>
+            </a>
+          </li>
+          <li class="app-tile">
+            <a class="app-tile-link" href="https://docs.hq.lasers.app/" rel="noopener">
+              <span class="app-tile-icon app-tile-initials" aria-hidden="true">HQ</span>
+              <span class="app-tile-name">Maintainer HQ</span>
+              <span class="app-tile-blurb">Bring your repositories, monitoring, and project activity into one workspace.</span>
+              <span class="app-tile-action">Read docs <span aria-hidden="true">&rarr;</span></span>
+            </a>
+          </li>
+        </ul>
+      </section>
 
       <footer class="apps-footer">
         <a class="apps-home-link" href="https://strangelasers.com" rel="noopener">strangelasers.com</a>
