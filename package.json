@@ -11,9 +11,12 @@
     "check": "eleventy --dryrun",
     "dev": "eleventy --serve",
     "start": "npm run dev",
-    "watch": "eleventy --watch"
+    "watch": "eleventy --watch",
+    "deploy": "npm run build && wrangler deploy",
+    "deploy:check": "npm run deploy -- --dry-run"
   },
   "devDependencies": {
-    "@11ty/eleventy": "3.1.6"
+    "@11ty/eleventy": "3.1.6",
+    "wrangler": "4.131.1"
   }
 }

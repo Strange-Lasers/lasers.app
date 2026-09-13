@@ -2,7 +2,7 @@
 
 Landing page for [lasers.app](https://lasers.app) - the hosted apps and self-hosted tools portfolio for Strange Lasers.
 
-Static site built with [Eleventy](https://www.11ty.dev/) and served via GitHub Pages, proxied through Cloudflare. A sibling of [strangelasers.com](https://strangelasers.com) (the company); this domain indexes the apps and tools.
+Static site built with [Eleventy](https://www.11ty.dev/) for Cloudflare Workers Static Assets. A sibling of [strangelasers.com](https://strangelasers.com) (the company); this domain indexes the apps and tools.
 
 ## Development
 
@@ -23,7 +23,7 @@ For a preview without a server, run `npm run build` and open `_site/index.html` 
 - `src/_data/catalog.json` provides the ordered `hosted.projects` and `selfHosted.projects` arrays, with an `action` label for each group
 - `public/` holds static assets copied unchanged into the output directory
 
-Edit source files and commit those changes. Eleventy generates `_site/`, which is ignored by Git. `node_modules/` and `.vite/` are also ignored; Eleventy does not use Vite's cache.
+Edit source files and commit those changes. Eleventy generates `_site/`, which is ignored by Git. `node_modules/`, `.wrangler/`, and `.vite/` are also ignored; Eleventy does not use Vite's cache.
 
 Templates use Nunjucks with HTML escaping enabled. Missing values referenced by a rendered expression fail the build, so keep catalog entries complete and use ordinary `{{ value }}` expressions for data. The layout's `content | safe` inserts the HTML produced by the page template.
 
@@ -69,8 +69,27 @@ After a brand sync, compare the copied assets against the source checkout, inspe
 
 ## Publishing
 
-Before the first deployment, set **Settings > Pages > Build and deployment > Source** to **GitHub Actions**, and confirm that the custom domain remains `lasers.app`. The site must publish the generated `_site/` artifact. See [GitHub's custom workflow instructions](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
+Cloudflare Workers Static Assets is the deployment target. `wrangler.jsonc` names the Worker `lasers-app` and uploads only `_site/`. It has no Worker script or runtime bindings. `workers.dev` and preview URLs are disabled.
 
-The workflow in `.github/workflows/pages.yml` installs locked dependencies and builds pull requests. Pushes to `main`, and manual runs against `main`, also upload `_site/` and deploy it through the `github-pages` environment. The artifact includes `public/CNAME` at its root. Commit source and the lockfile; generated HTML is not tracked.
+The workflow in `.github/workflows/deploy.yml` installs locked dependencies and runs `npm run deploy:check` on pull requests, pushes to `main`, and manual runs. This builds the site and validates the assets-only deployment with Wrangler's dry run. Successful pushes and manual runs on `main` also deploy through the `production` GitHub environment. Deployments are serialized, and pull requests receive no Cloudflare credentials.
 
-To restore a local build after cloning, run `npm ci` and `npm run build`. The preview and build need no credentials. GitHub Pages uses the workflow's scoped GitHub token permissions; DNS, the custom domain setting, and Pages source selection are external configuration that a clone does not recreate.
+Create the `production` GitHub environment, restrict its deployment branches to `main`, and configure:
+
+- Variable `CLOUDFLARE_ACCOUNT_ID` for the owning Cloudflare account
+- Secret `CLOUDFLARE_API_TOKEN` with permission to deploy Worker assets in that account
+
+Manage the `lasers.app` Custom Domain and the HTTP 308 redirect from `www.lasers.app` to the matching apex path and query in Cloudflare. The Wrangler configuration omits `route` and `routes`, so routine asset deployments leave that routing configuration unchanged. See [Wrangler's source-of-truth behavior](https://developers.cloudflare.com/workers/wrangler/configuration/#source-of-truth).
+
+For the initial move from GitHub Pages, deploy the Worker assets, attach `lasers.app` as its Custom Domain through Cloudflare Fleet, and verify the apex and `www` redirect before disabling GitHub Pages. Preserve the redirect and replace only the catalog's old origin. A Pages `CNAME` file is not part of the Worker bundle.
+
+For local validation or an authorized manual deployment:
+
+```bash
+npm ci
+npm run deploy:check
+npm run deploy
+```
+
+Only the final command publishes. It uses `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` from the environment. A clone restores the build and deployment configuration; it does not recreate GitHub environment values, the Custom Domain, DNS, or redirect rules. Use Cloudflare's deployment history to roll back Worker assets.
+
+The site requires no paid Cloudflare feature. [Static asset requests are free and unlimited](https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/); asset upload limits still apply. The bundle contains only the generated page and public assets, with no server-side code. Check its size against the [Workers Free static-asset limits](https://developers.cloudflare.com/workers/platform/limits/#static-assets) when expanding the catalog.
