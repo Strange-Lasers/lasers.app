@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Cloudflare Fleet</title>
+  <rect width="64" height="64" rx="15" fill="#071119"/>
+  <rect x="5" y="5" width="54" height="54" rx="12" fill="#173f41" stroke="#5de1d4" stroke-width="3"/>
+  <text x="32" y="41" fill="#eff8f7" font-family="ui-monospace, monospace" font-size="26" font-weight="800" text-anchor="middle">CF</text>
+</svg>

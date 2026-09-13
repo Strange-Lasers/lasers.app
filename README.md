@@ -22,10 +22,22 @@ Brand assets come from the [Strange Lasers brand sources](https://github.com/Str
 
 The header stacks the transparent mark and wordmark, while `logo.svg` provides the combined horizontal logo. The favicon and raster icons include their dark background tile. Keep image dimensions aligned with the source SVG viewBoxes, and update the asset version queries in `index.html` and `manifest.webmanifest` when refreshing assets so browsers request the new files.
 
+Use each project's published icon for its catalog card. The self-hosted tool icons below are copied from their project repositories. Keep these copies identical to the source assets so the catalog serves them without depending on external image hosts:
+
+| Catalog asset | Project source |
+| --- | --- |
+| `guildcontrol-icon.png` | [GuildControl `assets/guildcontrol-icon.png`](https://github.com/j-256/guildcontrol/blob/main/assets/guildcontrol-icon.png) |
+| `cloudflare-fleet-icon.svg` | [Cloudflare Fleet `docs/favicon.svg`](https://github.com/j-256/cloudflare-fleet/blob/main/docs/favicon.svg) |
+| `maintainer-hq-icon.svg` | [Maintainer HQ `site/public/favicon.svg`](https://github.com/j-256/maintainer-hq/blob/main/site/public/favicon.svg) |
+
+Keep card icons decorative with empty alt text because the adjacent project name labels the link.
+
 ## Local verification
 
 Serve the checkout with `python3 -m http.server 4176 --bind 127.0.0.1` and visit `http://127.0.0.1:4176/`. There is no build step or dependency installation.
 
 Check the cards at desktop and narrow phone widths, follow each destination including the GitHub badges, and use Tab to verify visible keyboard focus on both links in each card. Confirm that documentation links say **Read docs**, that application links say **Open app**, and that the content stays usable without JavaScript. Run `git diff --check` before committing.
+
+After a project icon update, compare the copied assets with their project sources and confirm that every card icon loads and stays legible at its displayed size.
 
 After a brand sync, compare the copied assets against the source checkout, inspect the transparent mark, wordmark, and combined logo on light and dark backgrounds, and confirm that the favicon and manifest icons load with the updated design.

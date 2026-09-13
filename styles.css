@@ -129,17 +129,6 @@ html, body {
   height: 3rem;
 }
 
-.app-tile-initials {
-  display: grid;
-  place-items: center;
-  border: 1px solid color-mix(in srgb, var(--laser-purple-highlight) 40%, transparent);
-  border-radius: 0.75rem;
-  background: color-mix(in srgb, var(--laser-purple-body) 18%, transparent);
-  color: var(--laser-purple-highlight);
-  font-weight: 600;
-  font-size: 1rem;
-}
-
 .app-tile-name {
   grid-area: name;
   font-weight: 600;
