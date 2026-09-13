@@ -1,8 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="680" height="250" viewBox="40 15 680 250" role="img" aria-labelledby="wordmark-title wordmark-desc" version="1.1">
-  <title id="wordmark-title">Strange Lasers</title>
-  <desc id="wordmark-desc">Vivid purple STRANGE above cyan LASERS with a fine near-black outline. The cyan upper beam and purple lower beam pass behind the letters except through one leg of each A, with fine white cores and perpendicular cyan and purple flares. Each balanced four-point flare has long sharp tips and gently curved tapers, with an opaque white center of the same shape, colored edges, a fine near-black outline, and a soft glow. Transparent background.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 360" role="img" aria-labelledby="logo-title logo-desc">
+  <title id="logo-title">Strange Lasers</title>
+  <desc id="logo-desc">A cyan and violet laser-eye mark beside the outlined Strange Lasers wordmark with woven laser beams and colored flares</desc>
   <defs>
-    <filter id="wide-glow" filterUnits="userSpaceOnUse" x="-100" y="-100" width="960" height="530">
+<linearGradient id="eye-edge" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0" stop-color="#7857ff"/>
+      <stop offset="0.25" stop-color="#7857ff"/>
+      <stop offset="0.75" stop-color="#11bfe9"/>
+      <stop offset="1" stop-color="#11bfe9"/>
+    </linearGradient>
+    <radialGradient id="background" cx="50%" cy="45%" r="72%">
+      <stop offset="0" stop-color="#102339"/>
+      <stop offset="0.55" stop-color="#091525"/>
+      <stop offset="1" stop-color="#050b14"/>
+    </radialGradient>
+    <linearGradient id="corona-rear" gradientUnits="userSpaceOnUse" x1="64" y1="0" x2="448" y2="0">
+      <stop offset="0" stop-color="#11bfe9"/>
+      <stop offset="0.5" stop-color="#78ebff"/>
+      <stop offset="1" stop-color="#11bfe9"/>
+    </linearGradient>
+    <linearGradient id="corona-front" gradientUnits="userSpaceOnUse" x1="64" y1="0" x2="448" y2="0">
+      <stop offset="0" stop-color="#7857ff"/>
+      <stop offset="0.5" stop-color="#a19af7"/>
+      <stop offset="1" stop-color="#7857ff"/>
+    </linearGradient>
+    <filter id="corona-tight-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+    <filter id="corona-wide-glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+
+<filter id="wide-glow" filterUnits="userSpaceOnUse" x="-100" y="-100" width="960" height="530">
       <feGaussianBlur stdDeviation="15"/>
     </filter>
     <filter id="tight-glow" filterUnits="userSpaceOnUse" x="-100" y="-100" width="960" height="530">
@@ -26,8 +54,32 @@
       <stop offset="0.5" stop-color="#a19af7"/>
       <stop offset="1" stop-color="#7857ff"/>
     </linearGradient>
-  </defs>
-  <g aria-hidden="true">
+</defs>
+  <g transform="translate(34 34) scale(.57)"><g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M70 362C110 84 402 84 442 362" stroke="#11bfe9" stroke-width="90" opacity="0.14" filter="url(#corona-wide-glow)"/>
+    <path d="M70 362C110 84 402 84 442 362" stroke="#11bfe9" stroke-width="48" opacity="0.22" filter="url(#corona-tight-glow)"/>
+    <path d="M70 362C110 84 402 84 442 362" stroke="url(#corona-rear)" stroke-width="30"/>
+    <path d="M70 362C110 84 402 84 442 362" stroke="#f7fdff" stroke-width="3" opacity="0.88"/>
+    <path d="M70 362C110 84 402 84 442 362" stroke="#f7fdff" stroke-width="1"/>
+    <path d="M64 142C124 426 388 426 448 142" stroke="#7857ff" stroke-width="90" opacity="0.14" filter="url(#corona-wide-glow)"/>
+    <path d="M64 142C124 426 388 426 448 142" stroke="#7857ff" stroke-width="48" opacity="0.22" filter="url(#corona-tight-glow)"/>
+    <path d="M64 142C124 426 388 426 448 142" stroke="url(#corona-front)" stroke-width="30"/>
+    <path d="M64 142C124 426 388 426 448 142" stroke="#f7fdff" stroke-width="3" opacity="0.88"/>
+    <path d="M64 142C124 426 388 426 448 142" stroke="#f7fdff" stroke-width="1"/>
+    <circle cx="64" cy="142" r="20" fill="#7857ff" opacity="0.2" filter="url(#corona-tight-glow)"/>
+    <rect x="428" y="122" width="40" height="40" rx="8" fill="#7857ff" opacity="0.2" filter="url(#corona-tight-glow)"/>
+    <rect x="50" y="342" width="40" height="40" rx="8" fill="#11bfe9" opacity="0.2" filter="url(#corona-tight-glow)"/>
+    <circle cx="442" cy="362" r="20" fill="#11bfe9" opacity="0.2" filter="url(#corona-tight-glow)"/>
+    <circle cx="64" cy="142" r="9" fill="#f7fdff"/>
+    <rect x="439" y="133" width="18" height="18" fill="#f7fdff"/>
+    <rect x="61" y="353" width="18" height="18" fill="#f7fdff"/>
+    <circle cx="442" cy="362" r="9" fill="#f7fdff"/>
+    <circle cx="256" cy="256" r="66" fill="none" stroke="#7857ff" stroke-width="14" opacity="0.16" filter="url(#corona-wide-glow)"/>
+    <circle cx="256" cy="256" r="47" fill="none" stroke="url(#eye-edge)" stroke-width="10"/>
+    <circle cx="256" cy="256" r="47" fill="#050b14" stroke="#f7fdff" stroke-width="6"/>
+    <circle cx="256" cy="256" r="12" fill="#f7fdff"/>
+  </g></g>
+  <g transform="translate(305 48)"><g aria-hidden="true">
     <g>
       <g>
         <g>
@@ -141,5 +193,5 @@
         </g>
       </g>
     </g>
-  </g>
+  </g></g>
 </svg>

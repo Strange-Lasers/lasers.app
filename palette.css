@@ -4,9 +4,15 @@
   --laser-cyan-body: #11bfe9;
   --laser-cyan-highlight: #78ebff;
   --laser-cyan-side: #08798f;
-  --laser-purple-body: #5955df;
+  --laser-purple-body: #7857ff;
   --laser-purple-highlight: #a19af7;
   --laser-purple-side: #4039a2;
+  --laser-mark-highlight-width: 3;
+  --laser-mark-highlight-opacity: 0.88;
+  --laser-mark-core-width: 1;
+  --laser-eye-outline-width: 10;
+  --laser-eye-blend-start: 0.25;
+  --laser-eye-blend-end: 0.75;
   --laser-eye-tracking: color-mix(
     in srgb,
     var(--laser-cyan-body),
