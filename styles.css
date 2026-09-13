@@ -104,7 +104,7 @@ html, body {
   grid-template-areas:
     "icon name"
     "icon blurb"
-    "icon action";
+    "action action";
   column-gap: 1rem;
   row-gap: 0.25rem;
   align-items: start;
@@ -157,8 +157,12 @@ html, body {
 
 .app-tile-action {
   grid-area: action;
-  padding-top: 0.75rem;
-  padding-right: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  min-height: 2.75rem;
+  margin-top: 0.75rem;
+  padding-right: 7rem;
   color: var(--laser-cyan-highlight);
   font-size: 0.9rem;
   font-weight: 600;
@@ -171,21 +175,25 @@ html, body {
 
 .app-github-link {
   position: absolute;
-  right: 1rem;
-  bottom: 0.5rem;
-  display: grid;
-  place-items: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: 0.5rem;
-  color: color-mix(in srgb, var(--laser-core) 75%, transparent);
-  transition: color 0.15s ease, background 0.15s ease;
+  right: 1.5rem;
+  bottom: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  background: var(--laser-core);
+  color: var(--laser-background);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s ease;
 }
 
 .app-github-link:hover,
 .app-github-link:focus-visible {
-  color: var(--laser-cyan-highlight);
-  background: color-mix(in srgb, var(--laser-cyan-body) 12%, transparent);
+  background: #fff;
 }
 
 .app-github-link:focus-visible {
