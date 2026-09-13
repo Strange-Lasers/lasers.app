@@ -6,7 +6,7 @@ Static site served via GitHub Pages, proxied through Cloudflare. A sibling of [s
 
 ## Catalog
 
-An active project with public documentation at `docs.<app>.lasers.app` is eligible for a listing, including software that users install or host themselves. Keep one card per project in `index.html` and confirm its canonical public destination before adding it. Documentation aliases and retained documentation for retired implementations do not need separate cards.
+An active project with public documentation at `docs.<app>.lasers.app` is eligible for a listing, including software that users install or host themselves. Keep one entry per project in `_data/catalog.json` and confirm its canonical public destination before adding it. Documentation aliases and retained documentation for retired implementations do not need separate cards.
 
 - Put usable public applications in **Hosted apps** with an **Open app** action, as with Stowplan
 - Put software that users run themselves in **Self-hosted tools** with a **Read docs** action; link directly to its canonical documentation, even if its product hostname redirects there
@@ -20,7 +20,7 @@ Maintainer HQ uses [docs.hq.lasers.app](https://docs.hq.lasers.app/). Cloudflare
 
 Brand assets come from the [Strange Lasers brand sources](https://github.com/Strange-Lasers/strangelasers.com/tree/main/brand). Copy the generated `mark.svg`, `mark-transparent.svg`, `wordmark.svg`, `logo.svg`, `icon-192.png`, and `icon-512.png`, along with `palette.css`, from the same source checkout after its brand checks pass. Keep these copies identical to the source assets; make geometry and palette changes upstream before syncing them here.
 
-The header stacks the transparent mark and wordmark, while `logo.svg` provides the combined horizontal logo. The favicon and raster icons include their dark background tile. Keep image dimensions aligned with the source SVG viewBoxes, and update the asset version queries in `index.html` and `manifest.webmanifest` when refreshing assets so browsers request the new files.
+The header stacks the transparent mark and wordmark, while `logo.svg` provides the combined horizontal logo. The favicon and raster icons include their dark background tile. Keep image dimensions aligned with the source SVG viewBoxes, and update the asset version queries in `_templates/index.mustache` and `manifest.webmanifest` when refreshing assets so browsers request the new files. Rebuild `index.html` after editing the template.
 
 Use each project's published icon for its catalog card. The self-hosted tool icons below are copied from their project repositories. Keep these copies identical to the source assets so the catalog serves them without depending on external image hosts:
 
@@ -32,9 +32,35 @@ Use each project's published icon for its catalog card. The self-hosted tool ico
 
 Keep card icons decorative with empty alt text because the adjacent project name labels the link.
 
+## Editing and preview
+
+The page is generated with [Mustache](https://github.com/janl/mustache.js). It uses a development dependency and produces plain HTML that works without JavaScript or a local server. The generated `index.html` stays committed because GitHub Pages publishes the repository root.
+
+- `_data/catalog.json` holds the ordered `hosted.projects` and `selfHosted.projects` arrays, with an `action` label shared by each group
+- Each project supplies `name`, plain-text `description`, public `url`, `github` repository URL, local `icon` filename, and the icon's intrinsic `width` and `height`
+- `_templates/card.mustache` defines the reusable card, including its GitHub badge and accessible labels
+- `_templates/index.mustache` defines the page and includes the card partial for each project
+
+Edit the data or templates, then rebuild instead of editing `index.html` directly. Keep data fields inside ordinary `{{field}}` tags so Mustache escapes HTML characters.
+
+To build after a fresh clone, install Node.js 22 or newer and restore the locked dependency:
+
+```bash
+npm ci
+npm run build
+```
+
+Open `index.html` in a browser. On macOS with Google Chrome installed, `npm start` builds the page and opens it in Chrome, preserving the default application for HTML files. It runs once; after another edit, rerun the build and refresh the page. CSS and asset edits need only a browser refresh.
+
+```bash
+npm start
+```
+
+Commit the changed source files together with the rebuilt `index.html`. `npm run check` compares `index.html` with a fresh render without writing files, and CI runs this check on pushes and pull requests. If the check reports missing or stale HTML, run `npm run build` and review the generated diff. Hosting continues to serve the checked-in HTML; CI does not generate or publish a replacement.
+
 ## Local verification
 
-Serve the checkout with `python3 -m http.server 4176 --bind 127.0.0.1` and visit `http://127.0.0.1:4176/`. There is no build step or dependency installation.
+Run `npm run check`, then open `index.html` directly. If an HTTP preview is useful, serve the checkout with `python3 -m http.server 4176 --bind 127.0.0.1` and visit `http://127.0.0.1:4176/`.
 
 Check the cards at desktop and narrow phone widths, follow each destination including the GitHub badges, and use Tab to verify visible keyboard focus on both links in each card. Confirm that documentation links say **Read docs**, that application links say **Open app**, and that the content stays usable without JavaScript. Run `git diff --check` before committing.
 
