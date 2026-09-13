@@ -1,0 +1,26 @@
+---
+layout: base.njk
+title: lasers.app | Apps by Strange Lasers
+description: Hosted apps and self-hosted tools by Strange Lasers. Open an app or read the docs to run a project yourself.
+---
+{% from "card.njk" import card %}
+      <section class="apps-section" aria-labelledby="hosted-heading">
+        <h2 class="apps-section-title" id="hosted-heading">Hosted apps</h2>
+        <ul class="apps-grid" role="list">
+{% for project in catalog.hosted.projects %}
+          {{ card(project, catalog.hosted.action) | indent(10) }}
+{% endfor %}
+        </ul>
+      </section>
+
+      <section class="apps-section" aria-labelledby="self-hosted-heading">
+        <header class="apps-section-header">
+          <h2 class="apps-section-title" id="self-hosted-heading">Self-hosted tools</h2>
+          <p class="apps-section-note">Documentation and setup guides.</p>
+        </header>
+        <ul class="apps-grid" role="list">
+{% for project in catalog.selfHosted.projects %}
+          {{ card(project, catalog.selfHosted.action) | indent(10) }}
+{% endfor %}
+        </ul>
+      </section>

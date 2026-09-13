@@ -1,0 +1,19 @@
+{
+  "name": "lasers-app",
+  "private": true,
+  "type": "module",
+  "license": "AGPL-3.0-only",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "eleventy",
+    "check": "eleventy --dryrun",
+    "dev": "eleventy --serve",
+    "start": "npm run dev",
+    "watch": "eleventy --watch"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.6"
+  }
+}

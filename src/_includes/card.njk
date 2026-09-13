@@ -1,0 +1,14 @@
+{% macro card(project, action) -%}
+<li class="app-tile">
+  <a class="app-tile-link" href="{{ project.url }}" rel="noopener">
+    <img class="app-tile-icon" src="{{ project.icon }}" alt="" width="{{ project.width }}" height="{{ project.height }}">
+    <span class="app-tile-name">{{ project.name }}</span>
+    <span class="app-tile-blurb">{{ project.description }}</span>
+    <span class="app-tile-action">{{ action }} <span aria-hidden="true">&rarr;</span></span>
+  </a>
+  <a class="app-github-link" href="{{ project.github }}" aria-label="{{ project.name }} on GitHub" title="{{ project.name }} on GitHub" rel="noopener">
+    <svg width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><use href="#github-icon"/></svg>
+    <span>GitHub</span>
+  </a>
+</li>
+{%- endmacro %}
