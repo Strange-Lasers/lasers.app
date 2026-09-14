@@ -80,7 +80,9 @@ Create the `production` GitHub environment, restrict its deployment branches to 
 
 Manage the `lasers.app` Custom Domain and the HTTP 308 redirect from `www.lasers.app` to the matching apex path and query in Cloudflare. The Wrangler configuration omits `route` and `routes`, so routine asset deployments leave that routing configuration unchanged. See [Wrangler's source-of-truth behavior](https://developers.cloudflare.com/workers/wrangler/configuration/#source-of-truth).
 
-For the initial move from GitHub Pages, deploy the Worker assets, attach `lasers.app` as its Custom Domain through Cloudflare Fleet, and verify the apex and `www` redirect before disabling GitHub Pages. Preserve the redirect and replace only the catalog's old origin. A Pages `CNAME` file is not part of the Worker bundle.
+The `lasers.app` Custom Domain is attached to `lasers-app`. GitHub Pages is disabled and its `github-pages` environment is removed. Keep Pages disabled and do not add a Pages `CNAME` file to the Worker bundle.
+
+To restore hosting, deploy the Worker assets, then inspect its ingress through Cloudflare Fleet. Recreate a missing [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) through the Cloudflare dashboard or Workers Domains API. Existing externally managed A, AAAA, or CNAME records can prevent attachment; review and remove only the catalog's obsolete origin records through Cloudflare Fleet before attaching the domain. Preserve mail records and the separate `www` redirect. Verify HTTPS at the apex, compare published assets with `_site/`, and check that the `www` redirect preserves the path and query.
 
 For local validation or an authorized manual deployment:
 
