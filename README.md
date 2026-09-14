@@ -41,6 +41,8 @@ Each project supplies `name`, plain-text `description`, public `url`, `github` r
 
 Maintainer HQ uses [docs.hq.lasers.app](https://docs.hq.lasers.app/). Cloudflare Fleet uses [docs.cloudflare-fleet.lasers.app](https://docs.cloudflare-fleet.lasers.app/), and GuildControl MCP uses [docs.guildcontrol.lasers.app](https://docs.guildcontrol.lasers.app/).
 
+The public crawler files in `public/robots.txt` and `public/sitemap.xml` advertise the canonical catalog URL. Keep the sitemap aligned with public pages when adding routes.
+
 ## Branding
 
 Brand assets come from the [Strange Lasers brand sources](https://github.com/Strange-Lasers/strangelasers.com/tree/main/brand). Copy the generated `mark.svg`, `mark-transparent.svg`, `wordmark.svg`, `logo.svg`, `icon-192.png`, and `icon-512.png`, along with `palette.css`, into `public/` from the same source checkout after its brand checks pass. Keep these copies identical to the source assets; make geometry and palette changes upstream before syncing them here.
