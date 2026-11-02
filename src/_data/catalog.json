@@ -10,6 +10,15 @@
         "icon": "stowplan-icon.svg",
         "width": 64,
         "height": 64
+      },
+      {
+        "name": "Cheat Code",
+        "description": "Company-wise technical interview preparation and spaced repetition tracker.",
+        "url": "https://cheatcode.lasers.app",
+        "github": "https://github.com/Kitchenwasher/leetcode-company-tracker",
+        "icon": "cheatcode-icon.svg",
+        "width": 64,
+        "height": 64
       }
     ]
   },
